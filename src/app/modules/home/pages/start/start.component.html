@@ -1,16 +1,14 @@
 <mat-card>
-  <form name="startForm">
-    <mat-form-field>
-      <mat-label>Benutzername</mat-label>
-      <input required placeholder="Ex. Chef" [(ngModel)]="userName" />
-    </mat-form-field>
-    <button
-      type="submit"
-      [routerLink]="'/quiz'"
-      color="primary"
-      [disabled]="!userName"
-    >
-      Start
-    </button>
-  </form>
+  <mat-form-field>
+    <mat-label>Benutzername</mat-label>
+    <input matInput placeholder="Ex. Chef" [(ngModel)]="userName" />
+  </mat-form-field>
+  <button
+    mat-button
+    [routerLink]="'/quiz'"
+    color="primary"
+    [disabled]="!userName"
+  >
+    Start
+  </button>
 </mat-card>
