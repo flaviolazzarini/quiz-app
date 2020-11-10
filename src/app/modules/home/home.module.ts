@@ -5,8 +5,11 @@ import { MatInput, MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
+import { RouterModule } from '@angular/router';
+import {routes} from './home.routes';
 
 
+export const routing = RouterModule.forChild(routes);
 
 @NgModule({
   declarations: [StartComponent],
@@ -15,7 +18,8 @@ import {MatCardModule} from '@angular/material/card';
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    routing
   ]
 })
 export class HomeModule { }

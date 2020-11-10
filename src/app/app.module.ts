@@ -5,7 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
-import {HomeModule} from './modules/home/home.module';
+import { HomeModule } from './modules/home/home.module';
+import { QuizModule } from './modules/quiz/quiz.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import {HomeModule} from './modules/home/home.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     StoreModule.forRoot({}, {}),
-    HomeModule
+    HomeModule,
+    QuizModule
   ],
   providers: [],
   bootstrap: [AppComponent]
