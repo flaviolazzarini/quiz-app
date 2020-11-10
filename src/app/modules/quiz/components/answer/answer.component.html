@@ -1,1 +1,5 @@
-<p>answer works!</p>
+<mat-radio-group>
+  <mat-radio-button *ngFor="let answer of answers" [value]="answer">
+    {{ answer }}
+  </mat-radio-button>
+</mat-radio-group>
