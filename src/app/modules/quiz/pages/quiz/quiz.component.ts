@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { QuestionService } from 'src/app/core/question.service';
+import { Question } from 'src/app/shared/models/Question';
 
 @Component({
   selector: 'app-quiz',
@@ -7,9 +9,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuizComponent implements OnInit {
 
-  constructor() { }
+  public questions: Question[];
+  private currentQuestionCount = 0;
+  get currentQuestion(): Question {
+    return this.questions[this.currentQuestionCount];
+  }
+  constructor(private questionService: QuestionService) { }
 
   ngOnInit(): void {
+    this.questionService.getQuestions().subscribe(question => this.questions = question);
+
+  }
+
+  onNextClick(): void {
+    if (this.currentQuestionCount < this.questions.length - 1) {
+      this.currentQuestionCount += 1;
+    }
+  }
+
+  onPreviousClick(): void {
+    if (this.currentQuestionCount > 0) {
+      this.currentQuestionCount -= 1;
+    }
   }
 
 }
