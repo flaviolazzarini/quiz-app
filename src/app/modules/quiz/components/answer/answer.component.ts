@@ -24,7 +24,7 @@ export class AnswerComponent implements OnInit, OnChanges {
 
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.disabled.currentValue === false) {
+    if (changes.disabled !== undefined && changes.disabled.currentValue === false) {
       this.setAnswers(this.questionCorrectAnswer, this.questionIncorrectAnswers);
     }
   }

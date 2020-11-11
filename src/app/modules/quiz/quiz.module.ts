@@ -10,7 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatIconModule } from '@angular/material/icon';
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 export const routing = RouterModule.forChild(routes);
 
@@ -24,6 +24,7 @@ export const routing = RouterModule.forChild(routes);
     MatCardModule,
     MatRadioModule,
     MatIconModule,
+    MatProgressSpinnerModule,
     routing
   ]
 })
