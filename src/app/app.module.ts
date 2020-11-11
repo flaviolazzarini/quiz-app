@@ -9,6 +9,8 @@ import { HomeModule } from './modules/home/home.module';
 import { QuizModule } from './modules/quiz/quiz.module';
 import { HttpClientModule } from '@angular/common/http';
 import { httpInterceptorProviders } from 'src/app/shared/interceptors/index';
+import { MatToolbarModule } from '@angular/material/toolbar';
+
 
 @NgModule({
   declarations: [
@@ -19,6 +21,7 @@ import { httpInterceptorProviders } from 'src/app/shared/interceptors/index';
     AppRoutingModule,
     BrowserAnimationsModule,
     StoreModule.forRoot({}, {}),
+    MatToolbarModule,
     HttpClientModule,
     HomeModule,
     QuizModule

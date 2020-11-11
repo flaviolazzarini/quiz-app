@@ -11,11 +11,12 @@ import { MatCardModule } from '@angular/material/card';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ResultComponent } from './pages/result/result.component';
 
 export const routing = RouterModule.forChild(routes);
 
 @NgModule({
-  declarations: [QuizComponent, AnswerComponent],
+  declarations: [QuizComponent, AnswerComponent, ResultComponent],
   imports: [
     CommonModule,
     MatInputModule,
