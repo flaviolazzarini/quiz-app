@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
 import { HomeModule } from './modules/home/home.module';
 import { QuizModule } from './modules/quiz/quiz.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { QuizModule } from './modules/quiz/quiz.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     StoreModule.forRoot({}, {}),
+    HttpClientModule,
     HomeModule,
     QuizModule
   ],

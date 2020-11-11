@@ -1,6 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Question } from './../../app/shared/models/Question';
+import { pluck, switchMap } from 'rxjs/operators';
 
 const questions: Question[] = [
   {
@@ -58,10 +60,18 @@ const questions: Question[] = [
 
 export class QuestionService {
 
-  constructor() { }
+  private questionUrl = 'https://opentdb.com/api.php';
+  private tokenUrl = 'https://opentdb.com/api_token.php';
+  private numberOfQuestions = '10';
+  private currentToken$: Observable<string>;
+  constructor(private http: HttpClient) { }
 
   public getQuestions(): Observable<Question[]> {
-    return of(questions);
+    return this.http.get(this.tokenUrl, { params: { command: 'request' } }).pipe(pluck('token'),
+      switchMap(receivedToken =>
+        this.http.get<Question[]>(this.questionUrl, { params: { amount: this.numberOfQuestions, token: receivedToken as string } })),
+      pluck('results'));
   }
 }
+
 
