@@ -8,6 +8,7 @@ import { StoreModule } from '@ngrx/store';
 import { HomeModule } from './modules/home/home.module';
 import { QuizModule } from './modules/quiz/quiz.module';
 import { HttpClientModule } from '@angular/common/http';
+import { httpInterceptorProviders } from 'src/app/shared/interceptors/index';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
     HomeModule,
     QuizModule
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
