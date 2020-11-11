@@ -6,3 +6,16 @@ mat-card {
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
+
+mat-icon {
+  float: right;
+  margin-right: 5px;
+}
+
+#correctIcon {
+  color: green;
+}
+
+#wrongIcon {
+  color: red;
+}

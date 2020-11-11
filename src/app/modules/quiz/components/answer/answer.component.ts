@@ -1,4 +1,5 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { MatRadioChange } from '@angular/material/radio';
 
 @Component({
   selector: 'app-answer',
@@ -13,6 +14,9 @@ export class AnswerComponent implements OnInit, OnChanges {
   @Input() questionType: string;
   @Input() questionCorrectAnswer: string;
   @Input() questionIncorrectAnswers: string[];
+  @Input() disabled: boolean;
+
+  @Output() selectedAnswer = new EventEmitter<string>();
 
   ngOnInit(): void {
     this.setAnswers(this.questionCorrectAnswer, this.questionIncorrectAnswers);
@@ -20,7 +24,13 @@ export class AnswerComponent implements OnInit, OnChanges {
 
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.setAnswers(this.questionCorrectAnswer, this.questionIncorrectAnswers)
+    if (changes.disabled.currentValue === false) {
+      this.setAnswers(this.questionCorrectAnswer, this.questionIncorrectAnswers);
+    }
+  }
+
+  onRadioSelected(event: MatRadioChange): void {
+    this.selectedAnswer.emit(event.value);
   }
 
   private setAnswers(questionCorrectAnswer: string, questionIncorrectAnswers: string[]): void {

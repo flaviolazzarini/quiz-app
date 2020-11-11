@@ -6,12 +6,48 @@
       [(questionType)]="currentQuestion.type"
       [(questionCorrectAnswer)]="currentQuestion.correct_answer"
       [(questionIncorrectAnswers)]="currentQuestion.incorrect_answers"
+      [disabled]="this.currentQuestion.selected_answer !== undefined"
+      (selectedAnswer)="answerSelected($event)"
     ></app-answer>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button (click)="onPreviousClick()">
-      {{ "previous" | uppercase }}
+    <button
+      *ngIf="!this.currentQuestion.selected_answer"
+      mat-button
+      primary
+      [disabled]="!this.tempSelectedAnswer"
+      (click)="onAnswerClick()"
+    >
+      {{ "answer" | uppercase }}
     </button>
-    <button mat-button (click)="onNextClick()">{{ "next" | uppercase }}</button>
+    <button
+      mat-button
+      *ngIf="this.currentQuestion.selected_answer"
+      (click)="onNextClick()"
+    >
+      {{ "next" | uppercase }}
+    </button>
+    <mat-icon
+      *ngIf="
+        this.currentQuestion.selected_answer !== undefined &&
+        this.currentQuestion.selected_answer ===
+          this.currentQuestion.correct_answer
+      "
+      id="correctIcon"
+      aria-hidden="false"
+      aria-label="Example home icon"
+      >check_circle
+    </mat-icon>
+    <mat-icon
+      *ngIf="
+        this.currentQuestion.selected_answer !== undefined &&
+        this.currentQuestion.selected_answer !==
+          this.currentQuestion.correct_answer
+      "
+      id="wrongIcon"
+      aria-hidden="false"
+      aria-label="Example home icon"
+      >error</mat-icon
+    >
   </mat-card-actions>
 </mat-card>

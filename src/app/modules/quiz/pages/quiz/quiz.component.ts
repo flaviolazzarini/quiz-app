@@ -11,9 +11,11 @@ export class QuizComponent implements OnInit {
 
   public questions: Question[];
   private currentQuestionCount = 0;
+  public tempSelectedAnswer: string;
   get currentQuestion(): Question {
     return this.questions[this.currentQuestionCount];
   }
+
   constructor(private questionService: QuestionService) { }
 
   ngOnInit(): void {
@@ -21,15 +23,18 @@ export class QuizComponent implements OnInit {
 
   }
 
+  answerSelected(selectedAnswer: string): void {
+    this.tempSelectedAnswer = selectedAnswer;
+  }
+
+  onAnswerClick(): void {
+    this.currentQuestion.selected_answer = this.tempSelectedAnswer;
+  }
+
   onNextClick(): void {
     if (this.currentQuestionCount < this.questions.length - 1) {
       this.currentQuestionCount += 1;
-    }
-  }
-
-  onPreviousClick(): void {
-    if (this.currentQuestionCount > 0) {
-      this.currentQuestionCount -= 1;
+      this.tempSelectedAnswer = undefined;
     }
   }
 

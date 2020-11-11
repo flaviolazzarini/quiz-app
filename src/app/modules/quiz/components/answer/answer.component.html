@@ -1,5 +1,9 @@
-<mat-radio-group>
-  <mat-radio-button *ngFor="let answer of answers" [value]="answer">
+<mat-radio-group [disabled]="disabled">
+  <mat-radio-button
+    *ngFor="let answer of answers"
+    [value]="answer"
+    (change)="onRadioSelected($event)"
+  >
     {{ answer }}
   </mat-radio-button>
 </mat-radio-group>
